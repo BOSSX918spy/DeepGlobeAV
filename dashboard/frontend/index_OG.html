@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard- Segmentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Admin Dashboard- Segmentation</h1>
+
+    <div class="controls">
+        <button class="start" onclick="startSegmentation()">Start</button>
+        <button class="stop" onclick="stopSegmentation()">Stop</button>
+    </div>
+
+    <div class="stats">
+        <div class="card">
+            <div class="label">FPS</div>
+            <div class="value" id="fps">0</div>
+        </div>
+
+        <div class="card">
+            <div class="label">Latency</div>
+            <div class="value" id="latency">0</div>
+        </div>
+
+        <div class="card">
+            <div class="label">Tiles</div>
+            <div class="value" id="tiles">0</div>
+        </div>
+
+        <div class="card status">
+            <div class="label">Status</div>
+            <div class="value" id="status">Idle</div>
+        </div>
+    </div>
+
+    <div class="log-box">
+        <div class="label">Logs</div>
+        <div id="log"></div>
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

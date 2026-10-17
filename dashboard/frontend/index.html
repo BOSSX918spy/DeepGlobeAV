@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>DeepGlobeAV+</title>
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<style>
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: black;
+}
+
+#map {
+    width: 100vw;
+    height: 100vh;
+    background: black;
+}
+
+.leaflet-container {
+    background: black;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+
+/////////////////////////////////////////////////////////
+// IMAGE SIZE
+/////////////////////////////////////////////////////////
+
+const IMAGE_WIDTH = 50000;
+const IMAGE_HEIGHT = 30000;
+
+/////////////////////////////////////////////////////////
+// MAP
+/////////////////////////////////////////////////////////
+
+const map = L.map('map', {
+    crs: L.CRS.Simple,
+    minZoom: 0,
+    maxZoom: 5,
+    zoomControl: true,
+    attributionControl: false
+});
+
+/////////////////////////////////////////////////////////
+// BOUNDS
+/////////////////////////////////////////////////////////
+
+const southWest = map.unproject([0, IMAGE_HEIGHT], 7);
+const northEast = map.unproject([IMAGE_WIDTH, 0], 7);
+
+const bounds = new L.LatLngBounds(
+    southWest,
+    northEast
+);
+
+/////////////////////////////////////////////////////////
+// TILE LAYER
+/////////////////////////////////////////////////////////
+
+L.tileLayer(
+'http://localhost:8000/services/tile_cache/Mandalay%20Myanmar,%20earthquake/pyramid/{z}/{x}/{y}.png',
+{
+    tileSize: 512,
+    minZoom: 0,
+    maxZoom: 5,
+    maxNativeZoom: 5,
+    noWrap: true,
+    bounds: bounds
+}).addTo(map);
+
+/////////////////////////////////////////////////////////
+// START VIEW
+/////////////////////////////////////////////////////////
+
+map.fitBounds(bounds);
+
+/////////////////////////////////////////////////////////
+// LIMIT PANNING
+/////////////////////////////////////////////////////////
+
+map.setMaxBounds(bounds);
+
+</script>
+
+</body>
+
+</html>

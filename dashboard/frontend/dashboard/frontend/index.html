@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Inter Command</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<link rel="stylesheet" href="/static/style.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+
+<body>
+
+<div id="topbar">
+    <img src="/assets/headerlogo.jpeg" id="logo"/>
+    <div class="system-pill">SYSTEM ONLINE</div>
+</div>
+
+<div id="main">
+
+<div id="sidebar">
+
+<div class="panel-title">MISSION CONTROL</div>
+
+<label>Latitude</label>
+<input id="lat" value="30.7333"/>
+
+<label>Longitude</label>
+<input id="lon" value="76.7794"/>
+
+<label>Radius</label>
+<input id="radius" value="1"/>
+
+<button onclick="buildArea()">PROCESS AREA (AI)</button>
+
+<div class="divider"></div>
+
+<label>Start X</label>
+<input id="startX" value="100"/>
+<label>Start Y</label>
+<input id="startY" value="100"/>
+
+<label>Goal X</label>
+<input id="goalX" value="400"/>
+<label>Goal Y</label>
+<input id="goalY" value="400"/>
+
+<button onclick="computeRoute()">COMPUTE ROUTE</button>
+
+<div id="log">READY</div>
+
+</div>
+
+<div id="map"></div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
